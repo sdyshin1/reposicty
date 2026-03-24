@@ -1,1 +1,50 @@
-/* Add styles here */
+@layer base, components, utilities;
+
+@layer base {
+  :root {
+    --primary-color: oklch(70% 0.25 250); /* Bright cyan */
+    --accent-color: oklch(75% 0.3 330);  /* Vibrant pink/purple */
+    --background: oklch(20% 0.05 250);    /* Deep dark blue */
+    --surface: oklch(30% 0.05 250);       /* Muted surface */
+    --text: oklch(95% 0.02 250);          /* Near-white */
+    --ball-bg: oklch(85% 0.2 60);         /* Warm yellow-orange */
+    --ball-text: oklch(20% 0.1 60);       /* Dark brown-black */
+    
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: 
+      radial-gradient(circle at 50% 50%, var(--surface) 0%, var(--background) 100%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+  }
+}
+
+@layer components {
+  .app-container {
+    container-type: inline-size;
+    width: min(100%, 600px);
+  }
+
+  /* Specific styles for the custom element will be handled via Shadow DOM or generic classes */
+}
+
+@layer utilities {
+  .glow {
+    box-shadow: 0 0 20px oklch(from var(--accent-color) l c h / 0.5);
+  }
+
+  .lifted {
+    box-shadow: 
+      0 10px 15px -3px oklch(0% 0 0 / 0.3),
+      0 4px 6px -4px oklch(0% 0 0 / 0.3);
+  }
+}
