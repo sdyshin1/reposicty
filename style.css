@@ -2,49 +2,66 @@
 
 @layer base {
   :root {
-    --primary-color: oklch(70% 0.25 250); /* Bright cyan */
-    --accent-color: oklch(75% 0.3 330);  /* Vibrant pink/purple */
-    --background: oklch(20% 0.05 250);    /* Deep dark blue */
-    --surface: oklch(30% 0.05 250);       /* Muted surface */
-    --text: oklch(95% 0.02 250);          /* Near-white */
-    --ball-bg: oklch(85% 0.2 60);         /* Warm yellow-orange */
-    --ball-text: oklch(20% 0.1 60);       /* Dark brown-black */
+    --primary: oklch(75% 0.2 250);
+    --accent: oklch(75% 0.3 330);
+    --bg: oklch(15% 0.05 250);
+    --surface: oklch(25% 0.05 250);
+    --text: oklch(98% 0.01 250);
     
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
     color-scheme: dark;
   }
 
   body {
     margin: 0;
     min-height: 100dvh;
-    background: 
-      radial-gradient(circle at 50% 50%, var(--surface) 0%, var(--background) 100%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-blend-mode: overlay;
+    background-color: var(--bg);
+    background-image: 
+      radial-gradient(at 0% 0%, oklch(30% 0.1 250 / 0.3) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, oklch(30% 0.1 330 / 0.2) 0px, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
     color: var(--text);
-    display: grid;
-    place-items: center;
-    padding: 2rem;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
   }
 }
 
 @layer components {
   .app-container {
-    container-type: inline-size;
     width: min(100%, 600px);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 
-  /* Specific styles for the custom element will be handled via Shadow DOM or generic classes */
-}
-
-@layer utilities {
-  .glow {
-    box-shadow: 0 0 20px oklch(from var(--accent-color) l c h / 0.5);
+  header {
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
-  .lifted {
-    box-shadow: 
-      0 10px 15px -3px oklch(0% 0 0 / 0.3),
-      0 4px 6px -4px oklch(0% 0 0 / 0.3);
+  header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    margin: 0;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 10px 20px oklch(0% 0 0 / 0.3));
+  }
+
+  header p {
+    opacity: 0.7;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem 0;
+    opacity: 0.4;
+    font-size: 0.85rem;
   }
 }

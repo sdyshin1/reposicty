@@ -1,15 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>행운의 로또 번호 생성기</title>
+  <title>행운의 로또 & AI 동물상 테스트</title>
+  
+  <!-- 스타일 시트 -->
   <link href='./style.css' rel='stylesheet'>
+  
+  <!-- AI 모델 라이브러리 (TensorFlow.js 및 Teachable Machine) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  
+  <!-- 메인 로직 (defer를 사용하여 HTML 파싱 후 실행) -->
   <script defer src="./main.js"></script>
 </head>
 <body>
   <div class="app-container">
-    <lotto-generator></lotto-generator>
+    <header>
+      <h1>AI 행운의 놀이터</h1>
+      <p>로또 번호 생성과 동물상 테스트를 한 곳에서!</p>
+    </header>
+
+    <main>
+      <!-- 로또 번호 생성기 컴포넌트 -->
+      <lotto-generator></lotto-generator>
+
+      <!-- AI 동물상 테스트 컴포넌트 -->
+      <animal-face-test></animal-face-test>
+    </main>
+    
+    <footer>
+      <p>© 2026 AI Lucky Playground. Powered by Teachable Machine.</p>
+    </footer>
   </div>
 </body>
 </html>
