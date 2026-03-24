@@ -2,11 +2,12 @@
 
 @layer base {
   :root {
-    --primary: oklch(75% 0.2 250);
-    --accent: oklch(75% 0.3 330);
-    --bg: oklch(15% 0.05 250);
-    --surface: oklch(25% 0.05 250);
-    --text: oklch(98% 0.01 250);
+    --neon-pink: oklch(70% 0.3 350);
+    --neon-blue: oklch(75% 0.3 250);
+    --neon-yellow: oklch(85% 0.2 85);
+    --bg-dark: oklch(10% 0.02 250);
+    --surface-dark: oklch(18% 0.03 250);
+    --text-white: oklch(98% 0.01 250);
     
     font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
     color-scheme: dark;
@@ -15,53 +16,142 @@
   body {
     margin: 0;
     min-height: 100dvh;
-    background-color: var(--bg);
+    background-color: var(--bg-dark);
     background-image: 
-      radial-gradient(at 0% 0%, oklch(30% 0.1 250 / 0.3) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, oklch(30% 0.1 330 / 0.2) 0px, transparent 50%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-    color: var(--text);
-    line-height: 1.6;
+      radial-gradient(circle at 10% 10%, oklch(from var(--neon-pink) l c h / 0.15), transparent 40%),
+      radial-gradient(circle at 90% 90%, oklch(from var(--neon-blue) l c h / 0.15), transparent 40%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    color: var(--text-white);
     display: flex;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
+    overflow-x: hidden;
   }
 }
 
 @layer components {
   .app-container {
-    width: min(100%, 600px);
+    width: min(100%, 800px);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
   }
 
-  header {
+  /* 헤더 섹션 */
+  .dopamine-header {
     text-align: center;
+    position: relative;
+  }
+
+  .logo-area {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 1rem;
   }
 
-  header h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    letter-spacing: -0.05em;
+  .bolt {
+    font-size: 3.5rem;
+    color: var(--neon-yellow);
+    filter: drop-shadow(0 0 15px var(--neon-yellow));
+    animation: flicker 2s infinite;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 950;
     margin: 0;
-    background: linear-gradient(to right, var(--primary), var(--accent));
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    background: linear-gradient(to bottom, var(--text-white), oklch(from var(--text-white) l c h / 0.6));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 10px 20px oklch(0% 0 0 / 0.3));
   }
 
-  header p {
-    opacity: 0.7;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
+  h1 span {
+    color: var(--neon-pink);
+    -webkit-text-fill-color: var(--neon-pink);
+    filter: drop-shadow(0 0 20px var(--neon-pink));
   }
 
-  footer {
+  .tagline {
+    font-size: 1.25rem;
+    opacity: 0.6;
+    letter-spacing: -0.02em;
+  }
+
+  /* 스테이션 네비게이션 */
+  .station-nav {
+    display: flex;
+    background: var(--surface-dark);
+    padding: 0.5rem;
+    border-radius: 100px;
+    border: 1px solid oklch(100% 0 0 / 0.1);
+    box-shadow: inset 0 2px 10px oklch(0% 0 0 / 0.5);
+  }
+
+  .nav-item {
+    flex: 1;
     text-align: center;
-    padding: 2rem 0;
+    padding: 1rem;
+    border-radius: 100px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+  }
+
+  .nav-item.active {
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+    color: white;
+    opacity: 1;
+    box-shadow: 0 0 20px oklch(from var(--neon-pink) l c h / 0.4);
+  }
+
+  /* 푸터 스테이터스 */
+  .station-footer {
+    text-align: center;
+    margin-top: 2rem;
     opacity: 0.4;
-    font-size: 0.85rem;
+  }
+
+  .battery-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: var(--neon-yellow);
+  }
+
+  .battery-bar {
+    width: 100px;
+    height: 14px;
+    background: oklch(100% 0 0 / 0.1);
+    border: 1px solid var(--neon-yellow);
+    padding: 2px;
+    position: relative;
+  }
+
+  .battery-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 85%;
+    background: var(--neon-yellow);
+    box-shadow: 0 0 10px var(--neon-yellow);
+    animation: charging 2s infinite alternate;
+  }
+
+  @keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: 0.4; }
+  }
+
+  @keyframes charging {
+    from { opacity: 0.6; transform: scaleX(0.95); }
+    to { opacity: 1; transform: scaleX(1); }
   }
 }

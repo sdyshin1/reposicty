@@ -1,38 +1,46 @@
-# 로또 번호 생성기 블루프린트 (Lotto Generator Blueprint)
+# 도파민 충전소 (Dopamine Station) 블루프린트
 
 ## 개요 (Overview)
-현대적이고 직관적이며 시각적으로 생동감 넘치는 로또 번호 생성기입니다. 사용자는 버튼 클릭 한 번으로 1부터 45 사이의 고유한 번호 6개를 생성할 수 있으며, 프리미엄 사용자 경험을 제공합니다.
+'도파민 충전소'는 현대인의 일상에 소소한 즐거움과 행운을 제공하는 인터랙티브 웹 애플리케이션입니다. 네온 테마의 강렬한 비주얼과 매끄러운 사용자 경험을 통해 '행운(로또)'과 '매력(AI 동물상)'을 충전할 수 있는 공간을 제공합니다.
 
 ## 주요 기능 (Features)
-- **로또 번호 생성:** 클릭 시 1-45 사이의 중복 없는 6개 번호를 생성하고 오름차순으로 정렬합니다.
-- **AI 동물상 테스트:** Teachable Machine Image Model을 연동하여 웹캠으로 사용자의 동물상을 분석합니다.
-  - 실시간 예측 및 확률 바(Bar) 표시.
-  - 가장 높은 확률의 결과 강조 표시.
-- **웹 컴포넌트 아키텍처:** Shadow DOM을 사용하여 캡슐화된 `<lotto-generator>` 및 `<animal-face-test>` 커스텀 엘리먼트 구현.
-- **최신 CSS 기술 적용:**
-  - **oklch()**: 시각적으로 균일하고 생생한 색상 시스템 적용.
-  - **Cascade Layers (@layer)**: 스타일 구조화 (base, components, utilities).
-  - **Container Queries**: 생성기 카드의 반응형 레이아웃 최적화.
-  - **Glassmorphism**: `backdrop-filter: blur()`와 반투명 배경을 통한 프리미엄 느낌 구현.
-  - **노이즈 텍스처 (Noise Texture)**: 배경에 미세한 SVG 노이즈를 추가하여 질감 표현.
-- **반응형 디자인:** CSS Grid를 활용한 중앙 정렬 및 모바일/데스크탑 최적화.
-- **인터랙티브 UI:** 로또 공의 `pop-in` 애니메이션과 버튼의 글로우(Glow) 효과.
+- **행운 충전 (로또 번호 생성기):**
+  - 클릭 한 번으로 1-45 사이의 중복 없는 6개 번호 생성 및 정렬.
+  - 번호 구간별 한국 로또 표준 색상 적용.
+- **매력 충전 (AI 동물상 테스트):**
+  - Teachable Machine Image Model 연동을 통한 실시간 얼굴 분석.
+  - 웹캠을 활용한 즉각적인 결과 확인 및 확률 그래프 표시.
+- **도파민 스테이션 네비게이션:**
+  - 탭 방식의 인터페이스를 통해 '행운'과 '매력' 섹션을 매끄럽게 전환.
+  - 현재 활성화된 섹션에 따른 시각적 피드백 제공.
+- **웹 컴포넌트 기반 아키텍처:**
+  - `<lotto-generator>` 및 `<animal-face-test>`로 캡슐화된 독립적 UI 컴포넌트.
+
+## 디자인 및 스타일 (Design & Aesthetics)
+- **컨셉:** 사이버펑크 및 네온 스타일의 '도파민 충전소'.
+- **색상 팔레트:** 
+  - Neon Pink (`oklch(70% 0.3 350)`), Neon Blue (`oklch(75% 0.3 250)`), Neon Yellow (`oklch(85% 0.2 85)`).
+- **시각 효과:**
+  - **Glassmorphism:** 강한 블러(`backdrop-filter: blur(24px)`)와 반투명 배경.
+  - **Dynamic Background:** 방사형 그라데이션과 미세한 노이즈 텍스처로 깊이감 구현.
+  - **Animations:** 로또 공의 `pop-in`, 네온 로고의 `flicker`, 배터리 바의 `charging` 애니메이션.
+- **타이포그래피:** Pretendard 기반의 굵고 표현력 있는 서체 활용.
+
+## 기술 스택 (Technical Stack)
+- **HTML5/CSS3:** Baseline 기능을 활용한 현대적인 레이아웃 및 스타일링.
+- **Modern JavaScript:** ES Modules 및 Web Components (Shadow DOM).
+- **AI Library:** TensorFlow.js, Teachable Machine Image SDK.
+- **Deployment:** Firebase Hosting (예정).
 
 ## 프로젝트 구조 (Project Structure)
-- `index.html`: `<lotto-generator>` 엘리먼트를 포함하는 엔트리 포인트.
-- `style.css`: 전역 기본 스타일, 테마 변수 및 유틸리티 클래스.
-- `main.js`: `LottoGenerator` 웹 컴포넌트 정의 및 로직.
+- `index.html`: 메인 레이아웃 및 네비게이션 구조.
+- `style.css`: 네온 테마 및 컴포넌트 공통 스타일.
+- `main.js`: 웹 컴포넌트 정의 및 네비게이션 전환 로직.
+- `blueprint.md`: 프로젝트 전체 설계 및 진행 상황 기록.
 
-## 디자인 세부 사항 (Design Details)
-- **주요 색상 (Primary Color)**: 밝은 사이언 (`oklch(75% 0.2 250)`).
-- **배경 (Background)**: 방사형 그라데이션과 노이즈 텍스처가 적용된 깊은 다크 블루.
-- **로또 공 (Lotto Balls)**: 한국 로또 공의 표준 색상을 `oklch`로 재해석하여 적용 (1-10 노랑, 11-20 파랑, 21-30 빨강, 31-40 회색, 41-45 초록).
-- **타이포그래피 (Typography)**: 높은 가독성의 산세리프 시스템 폰트 및 굵은 서체 활용.
-
-## 검증 결과 (Verification Results)
-- [x] 1-45 사이의 고유한 6개 번호 생성 확인.
-- [x] 생성된 번호의 오름차순 정렬 확인.
-- [x] 웹 컴포넌트 캡슐화 및 스타일 격리 확인.
-- [x] 컨테이너 쿼리를 통한 반응형 레이아웃 작동 확인.
-- [x] 최신 CSS 기능 (oklch, layers) 정상 작동 확인.
-- [x] 한국어 인터페이스 적용 완료.
+## 검증 및 완료 사항 (Verification)
+- [x] 네온 테마 UI/UX 전면 개편 완료.
+- [x] 로또 번호 생성 및 색상 로직 정상 작동.
+- [x] AI 동물상 테스트 모델 로딩 및 실시간 분석 확인.
+- [x] 섹션 전환 네비게이션 구현 및 반응성 확인.
+- [x] 모바일 대응 반응형 레이아웃 최적화.

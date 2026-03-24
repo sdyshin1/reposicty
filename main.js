@@ -234,5 +234,34 @@ class AnimalFaceTest extends HTMLElement {
   }
 }
 
+/**
+ * 네비게이션 로직 및 초기화
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const navItems = document.querySelectorAll('.nav-item');
+  const sections = {
+    lotto: document.getElementById('lotto-section'),
+    animal: document.getElementById('animal-section')
+  };
+
+  // 초기 상태 설정
+  sections.animal.style.display = 'none';
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.getAttribute('data-target');
+      
+      // 네비 버튼 활성화 상태 전환
+      navItems.forEach(nav => nav.classList.remove('active'));
+      item.classList.add('active');
+
+      // 섹션 가시성 전환
+      Object.keys(sections).forEach(key => {
+        sections[key].style.display = key === target ? 'block' : 'none';
+      });
+    });
+  });
+});
+
 customElements.define('lotto-generator', LottoGenerator);
 customElements.define('animal-face-test', AnimalFaceTest);
