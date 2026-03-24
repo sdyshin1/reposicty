@@ -1,35 +1,35 @@
-# Lotto Generator Blueprint
+# 로또 번호 생성기 블루프린트 (Lotto Generator Blueprint)
 
-## Overview
-A modern, interactive, and visually vibrant Lotto number generator. This application allows users to generate 6 unique random numbers between 1 and 45 with a premium user experience.
+## 개요 (Overview)
+현대적이고 직관적이며 시각적으로 생동감 넘치는 로또 번호 생성기입니다. 사용자는 버튼 클릭 한 번으로 1부터 45 사이의 고유한 번호 6개를 생성할 수 있으며, 프리미엄 사용자 경험을 제공합니다.
 
-## Features
-- **Dynamic Generation:** Generates 6 unique numbers (1-45) with the click of a button. Numbers are sorted in ascending order.
-- **Web Component Architecture:** Encapsulated `<lotto-generator>` custom element using Shadow DOM.
-- **Modern CSS:**
-  - **oklch()**: Perceptually uniform colors for a vibrant look.
-  - **Cascade Layers (@layer)**: Organized styles (base, components, utilities).
-  - **Container Queries**: Responsive layout for the generator card.
-  - **Glassmorphism**: `backdrop-filter: blur()` and semi-transparent backgrounds for a premium feel.
-  - **Noise Texture**: Subtle SVG noise overlay for a tactile background.
-- **Responsive Design:** Centered layout using CSS Grid, adapting to mobile and desktop.
-- **Interactive UI:** Smooth `pop-in` animations and glow effects on buttons and lotto balls.
+## 주요 기능 (Features)
+- **동적 번호 생성:** 클릭 시 1-45 사이의 중복 없는 6개 번호를 생성하고 오름차순으로 정렬합니다.
+- **웹 컴포넌트 아키텍처:** Shadow DOM을 사용하여 캡슐화된 `<lotto-generator>` 커스텀 엘리먼트 구현.
+- **최신 CSS 기술 적용:**
+  - **oklch()**: 시각적으로 균일하고 생생한 색상 시스템 적용.
+  - **Cascade Layers (@layer)**: 스타일 구조화 (base, components, utilities).
+  - **Container Queries**: 생성기 카드의 반응형 레이아웃 최적화.
+  - **Glassmorphism**: `backdrop-filter: blur()`와 반투명 배경을 통한 프리미엄 느낌 구현.
+  - **노이즈 텍스처 (Noise Texture)**: 배경에 미세한 SVG 노이즈를 추가하여 질감 표현.
+- **반응형 디자인:** CSS Grid를 활용한 중앙 정렬 및 모바일/데스크탑 최적화.
+- **인터랙티브 UI:** 로또 공의 `pop-in` 애니메이션과 버튼의 글로우(Glow) 효과.
 
-## Project Structure
-- `index.html`: Entry point with the `<lotto-generator>` element.
-- `style.css`: Global base styles, theme variables, and utility classes.
-- `main.js`: Definition of the `LottoGenerator` Web Component.
+## 프로젝트 구조 (Project Structure)
+- `index.html`: `<lotto-generator>` 엘리먼트를 포함하는 엔트리 포인트.
+- `style.css`: 전역 기본 스타일, 테마 변수 및 유틸리티 클래스.
+- `main.js`: `LottoGenerator` 웹 컴포넌트 정의 및 로직.
 
-## Design Details
-- **Primary Color**: Bright cyan (`oklch(70% 0.25 250)`).
-- **Background**: Deep dark blue with a radial gradient and noise texture.
-- **Lotto Balls**: Dynamically colored based on their number value using `oklch` hue rotation.
-- **Typography**: Sans-serif system stack with high-contrast font weights.
+## 디자인 세부 사항 (Design Details)
+- **주요 색상 (Primary Color)**: 밝은 사이언 (`oklch(75% 0.2 250)`).
+- **배경 (Background)**: 방사형 그라데이션과 노이즈 텍스처가 적용된 깊은 다크 블루.
+- **로또 공 (Lotto Balls)**: 한국 로또 공의 표준 색상을 `oklch`로 재해석하여 적용 (1-10 노랑, 11-20 파랑, 21-30 빨강, 31-40 회색, 41-45 초록).
+- **타이포그래피 (Typography)**: 높은 가독성의 산세리프 시스템 폰트 및 굵은 서체 활용.
 
-## Verification Results
-- [x] 6 unique numbers (1-45) are generated.
-- [x] Numbers are sorted in ascending order.
-- [x] Web Component is correctly encapsulated.
-- [x] Responsive layout with Container Queries.
-- [x] Modern CSS features (oklch, layers) implemented.
-- [x] No console errors in implementation logic.
+## 검증 결과 (Verification Results)
+- [x] 1-45 사이의 고유한 6개 번호 생성 확인.
+- [x] 생성된 번호의 오름차순 정렬 확인.
+- [x] 웹 컴포넌트 캡슐화 및 스타일 격리 확인.
+- [x] 컨테이너 쿼리를 통한 반응형 레이아웃 작동 확인.
+- [x] 최신 CSS 기능 (oklch, layers) 정상 작동 확인.
+- [x] 한국어 인터페이스 적용 완료.
